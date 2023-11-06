@@ -5,6 +5,7 @@
 import requests
 import sys
 
+
 def top_ten(subreddit):
     """
     1-main
@@ -16,4 +17,4 @@ def top_ten(subreddit):
         return 0
     posts = response.json().get('data').get('children')
     for post in posts[:10]:
-        print(response.json().get('data').get('title'))
+        print(post.get('data').get('title'))
