@@ -11,8 +11,9 @@ def number_of_subscribers(subreddit):
     """
     module
     """
-    subs_number = requests.get("https://www.reddit.com/api/subscribe"
-                              .format(argv[1]))
+    subs_number = requests.get(
+        "https://www.reddit.com/api/subscribe"
+        .format(argv[1]))
     subs_number = subs_number.json()
 
     if len(sys.argv) < 2:
