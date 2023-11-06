@@ -4,19 +4,16 @@
 module
 """
 import requests
-from sys import argv
 
 
 def number_of_subscribers(subreddit):
     """
     module
     """
-    subs_number = requests.get(
-        "https://www.reddit.com/api/subscribe"
-        .format(argv[1]))
-    subs_number = subs_number.json()
+    url = "https://www.reddit.com/r/{}/about.json".format(subreddit)
+    head = {'User-Agent': 'Ayo User Agent 1.0'}
+    respnse = requests.get(url, headers=head, allow_redirects=False)
 
-    if len(sys.argv) < 2:
-        print("Please pass an argument for the subreddit to search.")
-    else:
-        print("{:d}".format(subs_number(sys.argv[1])))
+    if response.status_code != 200:
+        return 0
+    return response.json().get('data').get('subscribers')
