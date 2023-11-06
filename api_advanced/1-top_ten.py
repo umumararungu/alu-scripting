@@ -3,7 +3,6 @@
 1-main
 """
 import requests
-import sys
 
 
 def top_ten(subreddit):
@@ -15,7 +14,7 @@ def top_ten(subreddit):
     response = requests.get(url, headers=headers, allow_redirects=False)
     if response.status_code != 200:
         print(None)
-        return 
+        return
     posts = response.json().get('data').get('children')
     for post in posts[:10]:
         print(post.get('data').get('title'))
