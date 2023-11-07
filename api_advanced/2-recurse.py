@@ -13,10 +13,10 @@ def recurse(subreddit, hot_list=[]):
     headers = {'User-Agent': 'cynt user agent 1.1'}
     response = requests.get(url, headers=headers, allow_redirects=False)
     if response.status_code != 200:
-        
+    
         return None
     posts = response.json().get('data').get('children')
-    hot_list = hot_list 
+    hot_list = hot_list
     for post in posts:
         hot_list.append(post['data']['title'])
     return recurse(subreddit, hot_list)
