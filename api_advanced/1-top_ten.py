@@ -14,7 +14,7 @@ def top_ten(subreddit):
 
     res = requests.get(url,
                        headers={
-                           'User-Agent': 'Mozilla/5.0'})
+                           'User-Agent': 'cynth user agent 1.1'})
 
     if res.status_code != 200:
         print(None)
