@@ -15,12 +15,22 @@ def number_of_subscribers(subreddit):
     """
     returns the number of subscribers of a given subrredit
     """
-    url = "https://www.reddit.com/r/{}/about.json".format(subreddit)
-    headers = {'User-Agent': 'cynt user agent 1.1'}
-    response = requests.get(url, headers=headers, allow_redirects=False)
+    subreddit = sys.argv[1]
+    URL = f"https://www.reddit.com/r/{subreddit}/about.json"
 
-    if response.status_code != 200:
+    headers = {
+            "User-Agent": "0-subs/1.0"
+    }
+
+    raw_response = requests.get(URL, headers=headers)
+
+    if (raw_response.status_code) == 200:
+        json_response = raw_response.json()
+        sub_count = json_response['data']['subscribers']
+        print (sub_count)
+
+    else:
         return 0
-    return response.json().get('data').get('subscribers')
+
 if __name__ == "__main__":
     pass
