@@ -1,6 +1,8 @@
 #!/usr/bin/python3
 """
-module
+A function that queries the Reddit API for a given subreddit
+and returns the total number of subscribers. 
+Returns 0 if the subreddit is invalid
 """
 
 import json
