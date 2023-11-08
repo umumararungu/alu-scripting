@@ -18,9 +18,7 @@ def number_of_subscribers(subreddit):
     subreddit = sys.argv[1]
     URL = f"https://www.reddit.com/r/{subreddit}/about.json"
 
-    headers = {
-            "User-Agent": "0-subs/1.0"
-    }
+    headers = {"User-Agent": "0-subs/1.0"}
 
     raw_response = requests.get(URL, headers=headers)
 
