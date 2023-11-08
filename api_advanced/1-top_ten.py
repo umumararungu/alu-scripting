@@ -1,21 +1,20 @@
 #!/usr/bin/python3
-"""
-1-main
-"""
+"""" Top Ten Limit"""
 import requests
 
 
 def top_ten(subreddit):
-    """
-    1-main
-    """
-    url = "https://www.reddit.com/r/{}/hot.json".format(subreddit)
-    headers = {'User-Agent': 'cynt user agent 1.1'}
-    response = requests.get(url, headers=headers, allow_redirects=False)
-    if response.status_code != 200:
+    """"top ten"""
+    url = "https://www.reddit.com/r/{}/hot.json?limit=10" \
+        .format(subreddit)
+
+    res = requests.get(url,
+                       headers={
+                           'User-Agent': 'Mozilla/5.0'})
+
+    if res.status_code != 200:
         print(None)
-        return
     else:
-        posts = response.json().get('data').get('children')
-        for post in posts[:10]:
-            print(post.get('data').get('title'))
+        json_response = res.json()
+        posts = json_response.get('data').get('children')
+        [print(post.get('data').get('title')) for post in posts]s
